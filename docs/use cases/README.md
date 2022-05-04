@@ -6,8 +6,10 @@
 
 **Діаграма прецедентів**
 
+###Відношення узагальнення
+"Користувач" = User and "Технічна підтримка" =  admin
 
-@enduml
+![Scen1](https://i.postimg.cc/8CZnCmMY/image.png)
 
 ## Виключні сценарії
 
@@ -23,4 +25,54 @@
 
 ![Scen9](http://www.plantuml.com/plantuml/png/lPB5cTqm58Ntha9rnDMaWV0kP0WECsC5XaTcj_2VZkQJFSoiZV0UqZNT-COMZJmo-GeKaXBhxpV7d8xFNzv--d9k_yQmIynGFXabiLOC4s9QCWM6cjZGaCWZfjQQeUeNj0efDQy_MjDwzv3XkQTaLEUGQAXSvqJZOQ-FaKNxTb7DdW9vjbhX1ItkkMSNAvR8D4zgrTYAcX653K6UNIcmShiuPix1ARm9qEAHqZ0awujQ6bAjCRGkA1bHKslUw7_tgZ7zhNwJdRizpzNbyxJid7jyi7Dpa3UQe9NtIXREntrxArnqiavCoaYU_lLUKeki5IgRlzOqvrxeyFSVNES8)
 
+##Діяльність користувача
+
+###Реєстрація
+
+USR.REG: Створення нового облікового запису
+
+@startuml
+
+    |Клієнт|
+        start
+        : Користувач розпочинає взаємодію з системою;
+        : Користувач натискає на кнопку реєстрації;
+        : Користувач заповнює реєстраційну форму;
+        :Користувач натискає кнопку відправлення реєстраційної форми;
+    |Система|
+        : Система перевіряє передані реєстраційні дані ;
+        note right #ffaaaa
+        <b> Можливо
+        <b> USR.REG_EXС
+        end note
+        : Система створює новий обліковий запис, де зберігає введені дані ;
+        : Система надає користувачу інформацію про створення облікового запису ;
+    |Клієнт|
+        : Користувач завершує взаємодію з системою;
+    |Клієнт|
+
+@enduml
+###Аутентифікація/авторизація
+
+USR.LOG: Авторизація користувача
+
+@startuml
+
+    |Клієнт|
+        start
+        : Користувач вводить авторизаційні дані;
+        : Користувач натискає кнопку авторизації;
+    |Система|
+        : Система ідентифікує користувача ;
+        note right #ffaaaa
+        <b> Можливо
+        <b> SER.LOG_IN_EXC
+        end note
+        : Система авторизує користувача ;
+        : Система перенаправляє користувача на сторінку роботи з даними ;
+    |Клієнт|
+        : Користувач завершує взаємодію з системою;
+    |Клієнт|
+
+@enduml
 
