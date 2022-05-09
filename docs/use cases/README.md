@@ -13,9 +13,9 @@
 ![Scen1](https://i.postimg.cc/8CZnCmMY/image.png)
 
 
-##Діяльність користувача
+## Діяльність користувача
 
-###Реєстрація користувача
+### Реєстрація користувача
 
 *ID*: USR.REG <br>
 *Учасники*: Користувач, Система <br>
@@ -45,7 +45,7 @@
 
 <img src="http://www.plantuml.com/plantuml/png/dLHDIyD04BttLonu5V4eLgG8nNj5y2QAHGLjfOst75eZrbDwAIs8b_w3jZOs_SZsBypy8zzaOKsD8UBsifat-zwRlarAJUUYuJpUtnKKbajlfBb58RVvYJsQq8WxBY2pubxxjAz-wrOeQ9hH6b27GefGx2bWCzdG2k2K--mhcYbkcxCKI9tzOXwtiA4THLeONXGKzX5fA2xO4_c0U_6f5bfUe3N8vuKvSOp7Y7tmfbbe3WZqp_7n5Ni9qZzwJTga2IYdj1Pw75XI033YReOo-0TMcqAZxT8myV-DtCIKcuY2Q234eiejxiADBKrf1E5-XZ00s_4zSQtkL5NZzlh6KLjxHxjO5ZguF5JqJfe-CLI8qVG6T7fIsQcKZy_BPpIqGBLs5LDc3o1RuO9vtyIEh40_LzYCQGcp2rioQShvRJ4VI64iqwBhWynrn2yGB3LXbWE94tqco7JSY1JiaOt8t3nVnGdhX7yRz0_Z6jPqmZe8YpdlPDwDnbQ6VcNl7szWqwa_50ibH8EFmnS0">
 
-###Авторизація користувача
+### Авторизація користувача
  
 *ID*: USR.LOG <br>
 *Учасники*: Користувач, Система <br>
