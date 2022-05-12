@@ -12,6 +12,8 @@
 
 ![Scen1](https://i.postimg.cc/8CZnCmMY/image.png)
 
+###Структурування моделі варіантів використання для користувача
+![Scen2](https://i.postimg.cc/GbLKzsqm/image.png)
 
 ## Діяльність користувача
 
@@ -19,7 +21,8 @@
 
 *ID*: USR.REG <br>
 *Учасники*: Користувач, Система <br>
-*Результат*: Зареєстрований користувач <br>
+*Передумови*: Обліковий запис користувача в системі відсутній <br>
+*Результат*: Новий обліковий запис <br>
 
 @startuml
 
@@ -43,11 +46,10 @@
 
 @enduml
 
-<img src="http://www.plantuml.com/plantuml/png/dLHDIyD04BttLonu5V4eLgG8nNj5y2QAHGLjfOst75eZrbDwAIs8b_w3jZOs_SZsBypy8zzaOKsD8UBsifat-zwRlarAJUUYuJpUtnKKbajlfBb58RVvYJsQq8WxBY2pubxxjAz-wrOeQ9hH6b27GefGx2bWCzdG2k2K--mhcYbkcxCKI9tzOXwtiA4THLeONXGKzX5fA2xO4_c0U_6f5bfUe3N8vuKvSOp7Y7tmfbbe3WZqp_7n5Ni9qZzwJTga2IYdj1Pw75XI033YReOo-0TMcqAZxT8myV-DtCIKcuY2Q234eiejxiADBKrf1E5-XZ00s_4zSQtkL5NZzlh6KLjxHxjO5ZguF5JqJfe-CLI8qVG6T7fIsQcKZy_BPpIqGBLs5LDc3o1RuO9vtyIEh40_LzYCQGcp2rioQShvRJ4VI64iqwBhWynrn2yGB3LXbWE94tqco7JSY1JiaOt8t3nVnGdhX7yRz0_Z6jPqmZe8YpdlPDwDnbQ6VcNl7szWqwa_50ibH8EFmnS0">
 
 ### Авторизація користувача
  
-*ID*: USR.LOG <br>
+*ID*: USER.LOG_IN <br>
 *Учасники*: Користувач, Система <br>
 *Передумови*: Зареєстрований користувач <br>
 *Результат*: Авторизований користувач <br>
@@ -62,7 +64,7 @@
         : Система ідентифікує користувача ;
         note right #8B0000
         <b> Можливо
-        <b> SER.LOG_IN_EXC
+        <b> USER.LOG_IN_EXC
         end note
         : Система авторизує користувача ;
         : Система перенаправляє користувача на сторінку роботи з даними ;
@@ -72,106 +74,98 @@
 
 @enduml
 
-<img src="http://www.plantuml.com/plantuml/png/ZL9DIyD04BttLmnu5uzYH8fIH105lNWhYaK5RQN6MmwQYdgGUYaLn8l_88RMQDiaV-7DF_AnAsb36zgzxEpCspTlFietxd7JlRswB0cFXtSaUeSVlLTVMmWHw9F7a3q6cxtMP1PQU8L8qAFRrnT1W51zYqD4nADsyOjOkq9C01hENCgObmywCQ3L4LunSwGOQ6jc1dspf1u-BHVw627m9ZBb8q9LFPgnoVF05wbDfcazH8ybrnjkJPeNP-UkBArkhl1aeVMJ3S47TNvZI6diIYvqM3bOtjtVhkxiLIj7MrceLZyrfCLIymKl9dEQ94MVFrWnwL9Q9CLGNul9GAGO1aRPeDXqdy04NtInRuBeVwWKDkBRMMIhYeOU6KaKgS-snj1CjqDchXTdt2Q6WiPbaQNjJ6nhuzefbTbFhlSV">
 
 ### Запит на пошук та аналіз даних <br>
 
-*ID*: USR.SEARCH <br>
+*ID*: QUERY.SEARCH <br>
 *Учасники*: Користувач, Система <br>
 *Передумови*: Авторизований користувач <br>
-*Результат*: Проаналізовані дані, які запрошував користувач <br>
+*Результат*:  Відповідь на запит на екрані користувача <br>
 
 @startuml
 
         |Користувач|
             start
-            : Надсилає запит на пошук та аналіз даних;
+            : Користувач заповнює форму на пошук інформації;
+            : Користувач відправляє запит на пошук;
         |Система|
-            : Отримує запит. Надсилає користувачу форму для заповнення;
-        |Користувач|
-            : Заповнює та надсилає форму;
-        |Система|  
-            : Отримує форму;
-            : Виконує пошук та аналіз запрошених користувачем даних;
+            : Система аналізує введені дані;
             note right #8B0000
             <b> Можливо
             <b> QUERY.EXC
             end note
-            : Виконує розрахунок;
-            : Система виводить результат;
+            : Система проводить пошук по базам даних заданих ресурсів;
+            : Система фільтрує отримує дані відповідно до запиту користувача;
+            : Система формує дані для відповіді коритсувачу;
+            : Система виводить результат на екран коритстувача;
             : Система зберігає запит користувача в історії запитів;
         |Користувач|
             : Отримує результат;
             stop;
 
 @enduml
-
-<img src="http://www.plantuml.com/plantuml/png/VLFDIlD05DtdAIvy-_8jnOWKfG-W8EXIiQYWhTIuww9DBBee5aHQ41LyWrXR4zfEV8LptyZ3r6X3GcOrS-UUUtwIgLvvXotl-kBSSTfuGg8TnDfLNmEC4Ufjsn4kssHtwu8NX9Xe5p7cx7WKH2ny4UOB34BXFj4x3fY9-ZppbcNCTOX8CB77M7ik2T-MP9XYWR2T4hoIdZAmq20plbB0FSjBra3qnfOvW8Ha7gHJ4hOOqXaO7RXbbgbZz0VHUv8jtPYiX1Mkl2EH8ayPJDhmm4kQWR4DvHbQByIpXKGspS8aG1MPn8MhqVJgqZexEVNatzhMVovRtZZQ53nJm2TznSGdl-MTlThkGQMslsqhzSQndL4iNAaAaNP8twCCmzCizPWDHyXXUJ1XsTS-iPWI6z1cN-bQVLUAeOZmZgbs6CT7xXyi2CAoYGxj2DvoDrh1SCpObT8NaF-4UR4_JwLvwJfEbJ7nLNq3">
 
 ### Експорт результатів <br>
 
-*ID*: USR.EXPORT <br>
+*ID*: QUERY.EXPORT <br>
 *Учасники*: Користувач, Система <br>
-*Передумови*: Авторизований користувач <br>
-*Результат*: Можливість завантажити результати <br>
+*Передумови*: Користувач відправив запит на пошук та аналіз даних <br>
+*Результат*: Файл в обраному форматі з результатами аналізу <br>
 
 @startuml
 
         |Користувач|
             start
-            : Надсилає запит на експорт результатів;
+            : Користувач надсилає запит на експорт результатів;
         |Система|
-            : Отримує запит. Надсилає користувачу форму для заповнення;
+            : Система виводить форму обрання формату для заповнення користувачем;
         |Користувач|
-            : Заповнює та надсилає форму;
+            : Користувач заповнює та надсилає форму;
         |Система|  
-            : Отримує форму;
-            : Виконує пошук запиту в історії запитів користувачів;
+            : Система отримує форму;
+            : Система виконує пошук запиту в історії запитів користувача;
             note right #8B0000
             <b> Можливо
             <b> QUERY.EXC
             end note
-            : Конвертує результати та зберігає їх в окремому файлі;
-            : Система виводить файл;
+            : Система конвертує потрібний результат в обраний користувачем формат;
+            : Система виводить файл з результатами в обраному користувачем форматі;
             : Система зберігає запит користувача в історії запитів;
         |Користувач|
-            : Отримує результат. Може завантажити файл;
+            : Користувач завантажує файл;
+            : Користувач завершує взаємодію з системою;
             stop;
 @enduml
-
-<img src="http://www.plantuml.com/plantuml/png/XLJDIlDG5DpdAIvy-_8jnOeKfG-W8EXIiQYWhRHnbuLj5LqK2o8f51LyWnWR6zCaVOMvR-JS6rgJ9fgiBkTdvioSGseTyx1jNbsS6nR6YEKrVDcLFTc72qVUMOP8VRes4raNU863YUp2numTJm9J1kQ4wGb4S0Gy14pF5JXZPF0m9VvC3cGF3hbikDKbgeMtP0IMXN2iLRfNDd18XBAV8QiKJ1Ba1Sc-a3Sw7FA92SSOBb1YbaIaZH39OMgYScCur-W7GZwGN6cZ0TcHKjo_AnRYByrvZ5JX8tmb6f4kr9xVS-8WvPDIxGffQqBYy3LAfxcCOkEOoF8rMsP3jCzEJatnRsthFxzCUkDeK-0PCJwftOUBE9VUsQll7bJg-zkPJADvhB5NnOsLCBZmr1rfWVbRWfyOJq7lkj36HsByIDuguOWHwBQGhp2v1WTVHB1pRcRMmkP41IRQfy6oiwHlTPIKsOL6mobTKDKeESwI0yhPLbbioakOY898fHZo4rSBnNRCrcNLg75Z_8Dy0m00">
 
 ### Редагування запиту <br>
 
-*ID*: USR.UPD_QUERY <br>
+*ID*: QUERY.EDIT <br>
 *Учасники*: Користувач, Система <br>
-*Передумови*: Авторизований користувач <br>
-*Результат*:  Користувач отримує результат за оновленими параметрами <br>
+*Передумови*: Користувач відправив запит на пошук та аналіз даних <br>
+*Результат*:  Вивід нового результату на екран користувача <br>
 
 @startuml
 
         |Користувач|
             start
-            : Надсилає запит на редагування запиту щодо пошуку та аналізу даних;
+            : Користувач натискає кнопку редагування запиту на пошук та аналіз даних;
         |Система|
-            : Отримує запит. Надсилає користувачу форму для заповнення;
+            : Система виводить форму для заповнення користувачем;
         |Користувач|
-            : Заповнює та надсилає форму;
-        |Система|  
-            : Отримує форму;
-            : Виконує пошук запиту в історії запитів користувача;
+            : Користувач заповнює форму;
+            : Користувач відправляє новий запит на поушк та аналіз даних;
+        |Система|
+            : Система виконує пошук запиту в історії запитів користувача;
             note right #8B0000
             <b> Можливо
             <b> QUERY.EXC
             end note
-            : Виконує пошук та аналіз даних за оновленим запитом;
-            : Система виводить результат;
-        |Користувач|
-            : Отримує результат;
+            : Система змінює параметри пошуку або аналізу обраного запиту;
+            : Система формує дані для відповіді користувачу;
+            : Система виводить оновлений результат;
+            : Система зберігає оновлений результат в історії запитів;
             stop;
 @enduml
-
-<img src="http://www.plantuml.com/plantuml/png/ZLFBIiDG4DttAmRS5vTYHOhI3r0GTAbOLD1MQjnbOLD5XQ8WqeAeu1-4Mcrf7lx2cJ_ov0PChgcsMOMPkUTnvjxgcRFRSivFZaikdX3h1SRQLayx6C3NQxSakS_CMfLbmGjy3BMDCGAUU1ICMFWYZ2U8u0iXFp1axJq5PJ7I-zoOTaHl4NCc5bPYlU7W9AbwF6uE-0YqXn5h1YdYiQlAZn0NRwbg4eNmtTyANyb1NmYrO-ahJn4_AMQGABaqvJ0L46JoOuv4f3MUSefcPqbT_Gn2xqYU-eriIJdklnsB_EkvY94DFd28fX6PmIn_Uq4OYFOC8N7ury-tU-nE2mw-pTPeEdLf7HqSEhAmjBR8psglxAqAdYdbayx7X8WBxOsjskPEkRQzRdNgZNs3FQ-ruiNANIjZJ99JPZE1MIvpp1bc8opaQ2s4UQKEC3G9TTDNm0jClcv2hvw5CF_DAMvt5ZQVRVEqKgeo9hxpRm00">
 
 ## Виключні сценарії
 Виключні сценарії - це ситуації, що суперечать виконанню передумов.
